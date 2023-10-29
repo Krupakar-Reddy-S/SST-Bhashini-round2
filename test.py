@@ -4,16 +4,22 @@ import json
 user_id = input("Enter your user ID: ")
 api_key = input("Enter your API key: ")
 
-source_language = "hi"
-target_language = "ta"
-content = "मेरा नाम विहिर है और मैं भाषा यूज़ कर रहा हूँ"
+jsonFile = open('request.json', 'r')
+json_object = json.load(jsonFile)
+
+source_language = json_object["source_language"]
+target_language = json_object["target_language"]
+content = json_object["content"]
+
+jsonFile.close()
 
 ulca_service_endpoint = "https://meity-auth.ulcacontrib.org/ulca/apis/v0/model/getModelsPipeline"
+ulca_compute_endpoint = "https://dhruva-api.bhashini.gov.in/services/inference/pipeline"
 
 
 def get_translation_service_id():
 
-    headers = {
+    headers_config = {
         "userID": user_id,
         "ulcaApiKey": api_key,
     }
@@ -35,7 +41,7 @@ def get_translation_service_id():
         }
     }
 
-    ulca_service_response = requests.post(ulca_service_endpoint, json=ulca_service_request_payload, headers=headers)
+    ulca_service_response = requests.post(ulca_service_endpoint, json=ulca_service_request_payload, headers=headers_config)
 
     if ulca_service_response.status_code == 200:
         ulca_service_data = ulca_service_response.json()
@@ -52,9 +58,8 @@ Service_id = get_translation_service_id()
 
 if Service_id:
 
-    headers = {
-        "userID": user_id,
-        "ulcaApiKey": api_key,
+    headers_compute = {
+        "Authorization": "A5h_wqQm-PPb_fTbgRXAastGC1DOa-d8jG8V6uxfSN7XwetraaF29lOMGS9zxszL"
     }
 
     ulca_request_payload = {
@@ -84,7 +89,7 @@ if Service_id:
         }
     }
 
-    ulca_response = requests.post(ulca_service_endpoint, json=ulca_request_payload, headers=headers)
+    ulca_response = requests.post(ulca_compute_endpoint, json=ulca_request_payload, headers=headers_compute)
 
     if ulca_response.status_code == 200:
         ulca_response_data = ulca_response.json()

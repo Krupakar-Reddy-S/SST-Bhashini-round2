@@ -1,5 +1,15 @@
 {
-    "code": "something went wrong",
-    "message": null,
-    "timestamp": "2023-10-29T13:14:28.999+00:00"
+    "pipelineResponse": [
+        {
+            "taskType": "translation",
+            "config": null,
+            "output": [
+                {
+                    "source": "\u092e\u0947\u0930\u093e \u0928\u093e\u092e \u092e\u0939\u0940\u0930 \u0939\u0948 \u0914\u0930 \u092e\u0948\u0902 \u092d\u093e\u0937\u093e \u092f\u0942\u091c\u093c \u0915\u0930 \u0930\u0939\u093e \u0939\u0942\u0901",
+                    "target": "\u0b8e\u0ba9\u0bcd \u0baa\u0bc6\u0baf\u0bb0\u0bcd \u0bae\u0bb9\u0bbf\u0bb0\u0bcd, \u0ba8\u0bbe\u0ba9\u0bcd \u0bae\u0bca\u0bb4\u0bbf\u0baf\u0bc8\u0baa\u0bcd \u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bbf\u0bb1\u0bc7\u0ba9\u0bcd."
+                }
+            ],
+            "audio": null
+        }
+    ]
 }
