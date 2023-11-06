@@ -1,8 +1,12 @@
 import requests
 import json
+from dotenv import load_dotenv
+import os
 
-user_id = input("Enter your user ID: ")
-api_key = input("Enter your API key: ")
+load_dotenv()
+
+user_id = os.environ["BHASHINI_USER_ID"]
+api_key = os.environ["BHASHINI_API_KEY"]
 
 jsonFile = open('request.json', 'r')
 json_object = json.load(jsonFile)
@@ -59,7 +63,7 @@ Service_id = get_translation_service_id()
 if Service_id:
 
     headers_compute = {
-        "Authorization": "A5h_wqQm-PPb_fTbgRXAastGC1DOa-d8jG8V6uxfSN7XwetraaF29lOMGS9zxszL"
+        "Authorization": os.environ["INFERENCE_API_KEY"]
     }
 
     ulca_request_payload = {
